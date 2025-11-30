@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 let cors = require('cors');
 const enquiryRouter = require('./App/routes/web/enquiryRoutes');
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
@@ -14,8 +15,7 @@ app.get("/api", (req, res) => {
 app.use('/api/website/enquiry', enquiryRouter);
 
 const DBURL = "mongodb+srv://mazharcollage95_db_user:uhNqHtBXE0471SW9@test.i89sp2z.mongodb.net/mazhar_database?retryWrites=true&w=majority&appName=test";
-
-const PORT = 8020;
+const PORT = process.env.PORT;
 
 mongoose.connect(DBURL, {
     useNewUrlParser: true,
